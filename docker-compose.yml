@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      SERPER_API_KEY: <YOUR SERPER API KEY>
+      OPENAI_API_KEY: <YOUR OPEN AI API KEY>
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
